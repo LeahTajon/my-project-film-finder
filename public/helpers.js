@@ -2,7 +2,7 @@
 const populateGenreDropdown = (genres) => {
     const select = document.getElementById('genres')
 
-    for (const genre of genres){
+    for (const genre of genres) {
         let option = document.createElement("option");
         option.value = genre.id;
         option.text = genre.name;
@@ -49,7 +49,7 @@ const createMoviePoster = (posterPath) => {
     const posterImg = document.createElement('img');
     posterImg.setAttribute('src', moviePosterUrl);
     posterImg.setAttribute('id', 'moviePoster');
-
+  
     return posterImg;
 };
 
@@ -58,7 +58,7 @@ const createMovieTitle = (title) => {
     const titleHeader = document.createElement('h1');
     titleHeader.setAttribute('id', 'movieTitle');
     titleHeader.innerHTML = title;
-
+  
     return titleHeader;
 };
 
@@ -66,12 +66,12 @@ const createMovieTitle = (title) => {
 const createMovieOverview = (overview) => {
     const overviewParagraph = document.createElement('p');
     overviewParagraph.setAttribute('id', 'movieOverview');
-    overview.innerHTML = overview;
-
+    overviewParagraph.innerHTML = overview;
+  
     return overviewParagraph;
 };
 
-// Returns a random movie form the first page of movies
+// Returns a random movie from the first page of movies
 const getRandomMovie = (movies) => {
     const randomIndex = Math.floor(Math.random() * movies.length);
     const randomMovie = movies[randomIndex];
@@ -84,17 +84,17 @@ const displayMovie = (movieInfo) => {
     const movieTextDiv = document.getElementById('movieText');
     const likeBtn = document.getElementById('likeBtn');
     const dislikeBtn = document.getElementById('dislikeBtn');
-
+  
     // Create HTML content containing movie info
     const moviePoster = createMoviePoster(movieInfo.poster_path);
     const titleHeader = createMovieTitle(movieInfo.title);
     const overviewText = createMovieOverview(movieInfo.overview);
-
+  
     // Append title, poster, and overview to page
     moviePosterDiv.appendChild(moviePoster);
     movieTextDiv.appendChild(titleHeader);
     movieTextDiv.appendChild(overviewText);
-
+  
     showBtns();
     likeBtn.onclick = likeMovie;
     dislikeBtn.onclick = dislikeMovie;
